@@ -12,17 +12,22 @@ _From J. Vineet et al. 2018_
 
 ### VAEs
 A simple Autoencoder is an unsupervised Machine Learning tool that encodes each instance of the dataset in an latent space with a dimension much smaller than the dimension of the input data. A decoder then attempts to reconstruct the input data from the information encoded in the bottleneck.
+
 A Variational Autoencoder adds a structure to the latent space, which is taken as a Gaussian a multivariate distribution as a prior knowledge. The training objective of a VAE is to maximize the ELBO (Evidence LOwer Bound), or, in other words, minimizing this loss function:
 
-$\mathcal{L}(\theta_E, \theta_D )  = - \mathbb{E}_ {p^E_{\theta}(z|x)} [log p^D_{\theta}(x|z)] + \lambda_{KL}\cdot \mathcal{D}_ {KL} \left( p^E_{\theta}(z|x) || p_{latent}^{prior}(z) \right)$
+$\mathcal{L}_ {VAE} (\theta_E, \theta_D )  = - \mathbb{E}_ {p^E_{\theta}(z|x)} [log p^D_{\theta}(x|z)] + \lambda_{KL}\cdot \mathcal{D}_ {KL} \left( p^E_{\theta}(z|x) || p_{latent}^{prior}(z) \right)$
+
+Where $\lambda_{KL} \in \mathbb{R}^+$ is an hyperparameter, and $p_{latent}^{prior}(z) = \mathcal{N}(\vec{0}, \mathbb{I})$
 
 In order to compute meaningful gradients for the backpropagation, after the Encoder pass, the so called *re-parametrization trick* allows to write $z$ as a deterministic and differentiable function of $\theta_E$ and $x$ introducing a Standard Gaussian random varaiable $\epsilon$:
 
-$\epsilon \sim \mathcal{N}_{0,1}$
+$\epsilon \sim \mathcal{N}_{\vec{0}, \mathbb{I}}$
 
 $\mu, log\sigma^2 = Encoder(x)$
 
 $z = \mu + \sigma \bigodot \epsilon$
+
+Where $\bigodot$ represent the element-wise product.
 
 <img src="Images/VAE_structure.png" width=60% height=60%>
 
