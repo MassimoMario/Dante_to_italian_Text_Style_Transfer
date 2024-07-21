@@ -50,7 +50,7 @@ To overcome RNNs limitations in processing long term dependencies (vanishing and
 
 LSTMs incorporate types of gates:  the input gate, the forget gate, and the output gate. These gates work together to control the flow of information into the cell state, out of the cell state, and how much of the cell state should be updated. The input gate determines how much of the new information should be added to the cell state, while he forget state decides which information from the previous cell state $C_{t-1}$ should be forgotten, and finally the output gate determines which part of the cell state should be output as the hidden state. This structure allows LSTMs to remember information over longer sequences and selectively retain or discard information as needed. The equations below describe the forward pass in a LSTM cell:
 
-<img src="Images/LSTM_formula.png" width=37% height=37%>
+<img src="Images/LSTM_formula.png" width=35% height=35%>
 
 Where $t$ denotes time step. $W_{\alpha}$ and $U_{\alpha}$ matrices contain, respectively, the weights of the input and recurrent connections, $b_{\alpha}$ refers layer biases and $\sigma_{\alpha}$ to gates activation function, where the subscript $\alpha$ can refer to input $i$, forget $f$, output $o$ gate or memory cell $c$. $x_t$ and $h_t$ are input and hidden state at time step $t$.
 
@@ -62,7 +62,7 @@ A simplified alternative to LSTM is the GRU unit. GRUs use just two types of gat
 
 The equations for a forward pass in a GRU cell are:
 
-<img src="Images/GRU_formula.png" width=45% height=45%>
+<img src="Images/GRU_formula.png" width=50% height=50%>
 
 Where $r_t, z_t$ and $n_t$ are respectively the reset, update and new gates. $\sigma$ is the activation function and $\bigodot$ the Hadamard product. $h_t$ is the hidden state at time step $t$.
 
