@@ -6,6 +6,8 @@ The AI model consist of a Variational Autoencoder in which both Encoder and Deco
 
 The aim of the training phase is to learn a disentangled representation of the latent space in order to interpret it as composed of two parts: Style and Content space. During inference a sentence is embedded in this Style-Content latent space, and before feeding the decoder the Style space is replaced with a different Style tensor and concatenated with the original Content.
 
+
+
 ### VAEs
 A simple Autoencoder is an unsupervised Machine Learning tool that encodes each instance of the dataset in an latent space with a dimension much smaller than the dimension of the input data. A decoder then attempts to reconstruct the input data from the information encoded in the bottleneck.
 A Variational Autoencoder adds a structure to the latent space, which is taken as a Gaussian a multivariate distribution as a prior knowledge. The training objective of a VAE is to maximize the ELBO (Evidence LOwer Bound), or, in other words, minimizing this loss function:
@@ -19,6 +21,9 @@ $\epsilon \sim \mathcal{N}_{0,1}$
 $\mu, log\sigma^2 = Encoder(x)$
 
 $z = \mu + \sigma \bigodot \epsilon$
+
+<img src="Images/VAE_structure.png" width=60% height=60%>
+
 ### RNNs: GRU & LSTM
 
 ## Structure (in progress . . .)
