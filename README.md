@@ -6,7 +6,7 @@ The AI model consist of a Variational Autoencoder in which both Encoder and Deco
 
 The aim of the training phase is to learn a disentangled representation of the latent space in order to interpret it as composed of two parts: Style and Content space. During inference a sentence is embedded in this Style-Content latent space and, before feeding the decoder, the Style space is replaced with a different Style tensor and concatenated with the original Content.
 
-<img src="Images/TST_model.png" width=45% height=45%>
+<img src="Images/TST_model.png" width=50% height=50%>
 
 _From J. Vineet et al. 2018_
 
@@ -29,7 +29,7 @@ $z = \mu + \sigma \bigodot \epsilon$
 
 Where $\bigodot$ represent the element-wise product.
 
-<img src="Images/VAE_structure.png" width=63% height=63%>
+<img src="Images/VAE_structure.png" width=70% height=70%>
 
 *Pictorial rapresentation of a VAE*
 
