@@ -4,7 +4,7 @@ Pytorch implementation of text style transfer as described in [J. Vineet et al. 
 ## Theory background
 The AI model consist of a Variational Autoencoder in which both Encoder and Decoder are Recurrent Neural Networks.
 
-The aim of the training phase is to learn a disentangled representation of the latent space in order to interpret it as composed of two parts: Style and Content space. During inference a sentence is embedded in this Style-Content latent space and, before feeding the decoder, the Style space is replaced with a different Style tensor and concatenated with the original Content.
+The aim of the training phase is to reconstruct the input sentence and learn a disentangled representation of the latent space in order to interpret it as composed of two parts: Style and Content space. During inference a sentence is embedded in this Style-Content latent space and, before feeding the decoder, the Style space is replaced with a different Style tensor and concatenated with the original Content.
 
 <img src="Images/TST_model.png" width=50% height=50%>
 
@@ -14,7 +14,7 @@ To train a model to learn such a latent space, 4 losses are added to the usual V
 
 $\mathcal{L}_ {tot} = \mathcal{L}_ {VAE} (\theta_E, \theta_D) + \lambda_ {mul(s)} \cdot \mathcal{L}_ {mul(s)} (\theta_E, \theta_ {mul(s)}) + \lambda_ {mul(c)} \cdot \mathcal{L}_ {mul(c)} (\theta_E, \theta_ {mul(c)}) - \lambda_ {adv(s)} \cdot \mathcal{L}_ {adv(s)}(\theta_E) - \lambda_ {adv(c)} \cdot \mathcal{L}_ {adv(c)}(\theta_E)$
 
-Where $\mathcal{L}_ {VAE}$ is the VAE loss, $\mathcal{L}_ {mul(s)}, \mathcal{L}_ {mul(c)}$ the losses for discriminating style and content from the disentangled latent space, $\matchal{L}_ {adv(s)}, \mathcal{L}_ {adv(c)}$ the adversarial losses for style and space, and $\lambda_ {mul(s)}, \lambda_ {mul(c)}, \lambda_ {adv(s)}, \lambda_ {adv(c)} \in \mathbb{R}^+$ are hyperparameters.
+Where $\mathcal{L}_ {VAE}$ is the VAE loss, $\mathcal{L}_ {mul(s)}, \mathcal{L}_ {mul(c)}$ the losses for discriminating style and content from the disentangled latent space, $\mathcal{L}_ {adv(s)}, \mathcal{L}_ {adv(c)}$ the adversarial losses for style and space, and $\lambda_ {mul(s)}, \lambda_ {mul(c)}, \lambda_ {adv(s)}, \lambda_ {adv(c)} \in \mathbb{R}^+$ are hyperparameters.
 
 ### VAEs
 A simple Autoencoder is an unsupervised Machine Learning tool that encodes each instance of the dataset in an latent space with a dimension much smaller than the dimension of the input data. A decoder then attempts to reconstruct the input data from the information encoded in the latent space.
