@@ -10,6 +10,12 @@ The aim of the training phase is to learn a disentangled representation of the l
 
 _From J. Vineet et al. 2018_
 
+To train a model to learn such a latent space, 4 losses are added to the usual VAE loss: 2 to discriminate style and content from the two spaces and 2 adversarial losses for style and content:
+
+$\mathcal{L}_ {tot} = \mathcal{L}_ {VAE} (\theta_E, \theta_D) + \lambda_ {mul(s)} \cdot \mathcal{L}_ {mul(s)} (\theta_E, \theta_ {mul(s)}) + \lambda_ {mul(c)} \cdot \mathcal{L}_ {mul(c)} (\theta_E, \theta_ {mul(c)}) - \lambda_ {adv(s)} \cdot \mathcal{L}_ {adv(s)}(\theta_E) - \lambda_ {adv(c)} \cdot \mathcal{L}_ {adv(c)}(\theta_E)$
+
+Where $\mathcal{L}_ {VAE}$ is the VAE loss, $\mathcal{L}_ {mul(s)}, \mathcal{L}_ {mul(c)}$ the losses for discriminating style and content from the disentangled latent space, $\matchal{L}_ {adv(s)}, \mathcal{L}_ {adv(c)}$ the adversarial losses for style and space, and $\lambda_ {mul(s)}, \lambda_ {mul(c)}, \lambda_ {adv(s)}, \lambda_ {adv(c)} \in \mathbb{R}^+$ are hyperparameters.
+
 ### VAEs
 A simple Autoencoder is an unsupervised Machine Learning tool that encodes each instance of the dataset in an latent space with a dimension much smaller than the dimension of the input data. A decoder then attempts to reconstruct the input data from the information encoded in the latent space.
 
