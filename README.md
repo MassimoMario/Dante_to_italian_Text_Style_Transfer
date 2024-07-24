@@ -79,6 +79,7 @@ A sketch of GRU cell structure is shown below:
 # Results
 Here the results of training of two models: one taking GRUs as both Encoder and Decoder, and one taking a LSTM as Encoder and a GRU as Decoder:
 
+<img src="Images/models_training.png" width=80% height=80%>
 
 Here are three parameters to evaluate the quality of the Style Transfer:
 
