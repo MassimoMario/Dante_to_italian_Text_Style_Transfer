@@ -76,6 +76,24 @@ A sketch of GRU cell structure is shown below:
 
 <img src="Images/GRU_structure.png" width=45% height=45%>
 
+# Results
+Here the results of training of two models: one taking GRUs as both Encoder and Decoder, and one taking a LSTM as Encoder and a GRU as Decoder:
+
+
+Here are three parameters to evaluate the quality of the Style Transfer:
+
+| Model | STA | PPL | WO |
+| --- | --- | --- | --- |
+| GRU + GRU | 0.979 | 142 | 0.037 |
+| LSTM + GRU | 0.971 | 231 | 0.030 |
+
+Where **STA** is the Style Transfer Accuracy, computed using an independently trained Text Classifier,   $PPL = 2^{- \frac{1}{N} \sum_i log \left( P(w_i)\right)}$ is the Perplexity, and $WO = \frac{count(x \cap y)}{count(x \cup y)}$ is the Word Overlapping between input sequence $x$ and the transferred one $y$.
+
+Example of output for the two models giving as input *"nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura che la diritta via era smarrita"* to transfer in Italian:
+
+GRU + GRU: *e la sua insofferenza e la sua vita come si vede a vedere cos è successo che non è*
+
+LSTM + GRU: *e non si vedeva più la testa e non aveva più coraggio di non far nulla e non si*
 
 ## Structure (in progress . . .)
 
