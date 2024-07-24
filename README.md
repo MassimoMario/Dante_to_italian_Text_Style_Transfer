@@ -48,7 +48,7 @@ The input of a RNN is elaborated by the hidden states $h$ in a non-linear way by
 
 $h_t = tanh(W_{hh} h_{t-1} + W_{xh} x_t)$
 
-$y_t = W_{ht}h_t$
+$o_t = W_{ht}h_t$
 
 <img src="Images/RNN.png" width=65% height=65%>
 
