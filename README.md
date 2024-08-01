@@ -1,6 +1,64 @@
 # *Dante <--> Modern Italian* Text Style Transfer with non parallel data
 Pytorch implementation of text style transfer as described in [J. Vineet et al. 2018](https://arxiv.org/abs/1808.04339). The goal of this project is achieving neural style transfer between Dante Alighieri sentences and modern italian (and viceversa) training an AI model on non parallel data to learn the two styles and to perform the style transfer during inference phase.
 
+## Structure
+* [`TST_GRU.ipynb`](TST_GRU.ipynb) main notebook for Text Style Transfer with a GRU-GRU architecture, both Encoder and Decoder are RNNs with GRU cells
+* [`TST_LSTM.ipynb`](TST_LSTM.ipynb) main notebook for Text Style Transfer with a LSTM-GRU architecture where Encoder is a RNN with LSTM cells and the Decoder is a RNN with GRU cells
+* [`models.py`](models.py) module containing two classes for VAE model, Style and Content classifier classes, Adversarial Style and Adversarial Content classifier classes, and EarlyStopping class
+* [`config_dataset.py`](config_dataset.py) module containing functions for creating datasets
+* [`training.py`](training.py) module containing training function and all the loss functions
+* [`gruvae_state_dict.pth`](gruvae_state_dict.pth) and ['gru_style_cl_state_dict.pth'](gru_style_cl_state_dict.pth) contain, respectively, the parameters of the pretrained GRU-GRU model and his Style Classifier
+* [`lstmvae_state_dict.pth`](lstmvae_state_dict.pth) and ['lstm_style_cl_state_dict.pth'](lstm_style_cl_state_dict.pth) contain, respectively, the parameters of the pretrained LSTM-GRU model and his Style Classifier
+* [`divina_commedia.txt`](divina_commedia.txt) Divina Commedia corpus
+* [`uno_nessuno_e_i_malavoglia.txt`](uno_nessuno_e_i_malavoglia.txt) Italian language corpus, made up of _Uno, nessuno e centomila_ by Luigi Pirandello and _I Malavoglia_ by Giovanni Verga
+
+
+## Requirements
+- Numpy
+- Matplotlib
+- tqdm
+- Pytorch
+- Gensim
+
+## Usage 
+To get started, first open up a terminal and clone the project repository
+
+```bash
+git clone git@github.com:MassimoMario/Dante_to_italian_Text_Style_Transfer.git
+```
+Then pip install pytorch and gensim
+
+```bash
+pip install torch
+```
+```bash
+pip install gensim
+```
+
+Then go through [`TST_GRU.ipynb`](TST_GRU.ipynb) or [`TST_LSTM.ipynb`](TST_LSTM.ipynb) and run the cells following the Markdown annotations.
+
+In the notebook a dataset of the two styles is created and it's used to train the VAE model. You can also choose to load pre-trained model and to see inference results. A CNN Text Classifier is also defined and trained independently to quantify the Style Transfer Accuracy.
+
+# Results
+Here the results of training of two models: one taking GRUs as both Encoder and Decoder, and one taking a LSTM as Encoder and a GRU as Decoder:
+
+<img src="Images/models_training.png" width=80% height=80%>
+
+Here are three parameters to evaluate the quality of the Style Transfer:
+
+| Model | STA | PPL | WO |
+| --- | --- | --- | --- |
+| GRU + GRU | 0.979 | 142 | 0.037 |
+| LSTM + GRU | 0.971 | 231 | 0.030 |
+
+Where **STA** is the Style Transfer Accuracy, computed using an independently trained Text Classifier,   $PPL = 2^{- \frac{1}{N} \sum_i log_2 \left( P(w_i)\right)}$ is the Perplexity, and $WO = \frac{count(x \cap y)}{count(x \cup y)}$ is the Word Overlapping between input sequence $x$ and the transferred one $y$.
+
+Example of output for the two models giving as input *"nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura che la diritta via era smarrita"* to transfer in Italian:
+
+GRU + GRU: *e la sua insofferenza e la sua vita come si vede a vedere cos è successo che non è*
+
+LSTM + GRU: *e non si vedeva più la testa e non aveva più coraggio di non far nulla e non si*
+
 ## Theory background
 The AI model consist of a Variational Autoencoder in which both Encoder and Decoder are Recurrent Neural Networks.
 
@@ -76,29 +134,6 @@ A sketch of GRU cell structure is shown below:
 
 <img src="Images/GRU_structure.png" width=45% height=45%>
 
-# Results
-Here the results of training of two models: one taking GRUs as both Encoder and Decoder, and one taking a LSTM as Encoder and a GRU as Decoder:
-
-<img src="Images/models_training.png" width=80% height=80%>
-
-Here are three parameters to evaluate the quality of the Style Transfer:
-
-| Model | STA | PPL | WO |
-| --- | --- | --- | --- |
-| GRU + GRU | 0.979 | 142 | 0.037 |
-| LSTM + GRU | 0.971 | 231 | 0.030 |
-
-Where **STA** is the Style Transfer Accuracy, computed using an independently trained Text Classifier,   $PPL = 2^{- \frac{1}{N} \sum_i log_2 \left( P(w_i)\right)}$ is the Perplexity, and $WO = \frac{count(x \cap y)}{count(x \cup y)}$ is the Word Overlapping between input sequence $x$ and the transferred one $y$.
-
-Example of output for the two models giving as input *"nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura che la diritta via era smarrita"* to transfer in Italian:
-
-GRU + GRU: *e la sua insofferenza e la sua vita come si vede a vedere cos è successo che non è*
-
-LSTM + GRU: *e non si vedeva più la testa e non aveva più coraggio di non far nulla e non si*
-
-## Structure (in progress . . .)
-
-## Usage (in progess . . .)
 
 
 ## References
