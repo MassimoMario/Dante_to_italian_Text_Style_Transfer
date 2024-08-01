@@ -9,7 +9,7 @@ Pytorch implementation of text style transfer as described in [J. Vineet et al. 
 * [`training.py`](training.py) module containing training function and all the loss functions
 * [`gruvae_state_dict.pth`](gruvae_state_dict.pth) and [`gru_style_cl_state_dict.pth`](gru_style_cl_state_dict.pth) contain, respectively, the parameters of the pretrained GRU-GRU model and his Style Classifier
 * [`lstmvae_state_dict.pth`](lstmvae_state_dict.pth) and [`lstm_style_cl_state_dict.pth`](lstm_style_cl_state_dict.pth) contain, respectively, the parameters of the pretrained LSTM-GRU model and his Style Classifier
-* [`divina_commedia.txt`](divina_commedia.txt) Divina Commedia corpus
+* [`divina_commedia.txt`](divina_commedia.txt) Divina Commedia corpus by _Dante Alighieri_
 * [`uno_nessuno_e_i_malavoglia.txt`](uno_nessuno_e_i_malavoglia.txt) Italian language corpus, made up of _Uno, nessuno e centomila_ by Luigi Pirandello and _I Malavoglia_ by Giovanni Verga
 
 
