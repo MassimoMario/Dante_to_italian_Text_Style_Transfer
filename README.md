@@ -1,6 +1,14 @@
 # *Dante <--> Modern Italian* Text Style Transfer with non parallel data 🖋️
 Pytorch implementation of text style transfer as described in [J. Vineet et al. 2018](https://arxiv.org/abs/1808.04339). The goal of this project is achieving neural style transfer between Dante Alighieri sentences and modern italian (and viceversa) training an AI model on non parallel data to learn the two styles and to perform the style transfer during inference phase.
 
+## Table of Contens 
+* [Structure](#Structure)
+* [Requirements](#Requirements)
+* [Usage](#Usage)
+* [Results](#Results)
+* [Theory Background](#Theory-Background)
+* [References](#References)
+
 ## Structure
 * [`TST_GRU.ipynb`](TST_GRU.ipynb) main notebook for Text Style Transfer with a GRU-GRU architecture, both Encoder and Decoder are RNNs with GRU cells
 * [`TST_LSTM.ipynb`](TST_LSTM.ipynb) main notebook for Text Style Transfer with a LSTM-GRU architecture where Encoder is a RNN with LSTM cells and the Decoder is a RNN with GRU cells
