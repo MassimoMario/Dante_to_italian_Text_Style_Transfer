@@ -1,4 +1,4 @@
-# *Dante <--> Modern Italian* Text Style Transfer with non parallel data
+# *Dante <--> Modern Italian* Text Style Transfer with non parallel data 🖋️
 Pytorch implementation of text style transfer as described in [J. Vineet et al. 2018](https://arxiv.org/abs/1808.04339). The goal of this project is achieving neural style transfer between Dante Alighieri sentences and modern italian (and viceversa) training an AI model on non parallel data to learn the two styles and to perform the style transfer during inference phase.
 
 ## Structure
