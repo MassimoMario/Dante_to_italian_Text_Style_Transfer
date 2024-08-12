@@ -1,6 +1,13 @@
 # *Dante <--> Modern Italian* Text Style Transfer with non parallel data 🖋️
-Pytorch implementation of text style transfer as described in [J. Vineet et al. 2018](https://arxiv.org/abs/1808.04339). The goal of this project is achieving neural style transfer between Dante Alighieri sentences and modern italian (and viceversa) training an AI model on non parallel data to learn the two styles and to perform the style transfer during inference phase.
+Pytorch implementation of text style transfer as described in [J. Vineet et al. 2018](https://arxiv.org/abs/1808.04339).
 
+The goal of this project is achieving neural style transfer between Dante Alighieri sentences and modern italian (and viceversa) training an AI model on non parallel data to learn the two styles and to perform the style transfer during inference phase.
+
+The Word Embedding layer has been initialized using a Word2vec model trained on these two corpus, one for each language style:
+* Dante: _Divina Commedia_
+* Italian: _Uno, nessuno e centomila_ by Luigi Pirandello, and _I Malavoglia_ by Giovanni Verga
+
+  
 ## Table of Contens 
 * [Structure](#Structure)
 * [Requirements](#Requirements)
