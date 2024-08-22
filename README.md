@@ -1,13 +1,18 @@
 # *Dante <--> Modern Italian* Text Style Transfer with non parallel data 🖋️
 Pytorch implementation of text style transfer as described in [J. Vineet et al. 2018](https://arxiv.org/abs/1808.04339).
 
-The goal of this project is achieving neural style transfer between Dante Alighieri sentences and modern italian (and viceversa) training an AI model on non parallel data to learn the two styles and to perform the style transfer during inference phase.
+The goal of this project is achieving neural style transfer between Dante Alighieri sentences and modern italian (and viceversa) training a VAE model on non parallel data to learn the two styles and to perform the style transfer during inference phase. Simplifying the architecture of this project, two other simpler project can be developed: [Text Generation](https://github.com/MassimoMario/Italic_Text_Generation) and [Text Classification](https://github.com/MassimoMario/Italic_Text_Style_Classification).
 
 The Word Embedding layer has been initialized using a Word2vec model trained on these two corpus, one for each language style:
 * Dante: _Divina Commedia_
 * Italian: _Uno, nessuno e centomila_ by Luigi Pirandello, and _I Malavoglia_ by Giovanni Verga
 
-  
+Example of output for the two models giving as input *"nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura che la diritta via era smarrita"* to transfer in Italian:
+
+* **_GRU + GRU_**: *e la sua insofferenza e la sua vita come si vede a vedere cos è successo che non è*
+
+* **_LSTM + GRU_**: *e non si vedeva più la testa e non aveva più coraggio di non far nulla e non si*
+
 ## Table of Contens 
 * [Structure](#Structure)
 * [Requirements](#Requirements)
@@ -67,12 +72,6 @@ Here are three parameters to evaluate the quality of the Style Transfer:
 | LSTM + GRU | 0.971 | 231 | 0.030 |
 
 Where **STA** is the Style Transfer Accuracy, computed using an independently trained Text Classifier,   $PPL = 2^{- \frac{1}{N} \sum_i log_2 \left( P(w_i)\right)}$ is the Perplexity, and $WO = \frac{count(x \cap y)}{count(x \cup y)}$ is the Word Overlapping between input sequence $x$ and the transferred one $y$.
-
-Example of output for the two models giving as input *"nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura che la diritta via era smarrita"* to transfer in Italian:
-
-GRU + GRU: *e la sua insofferenza e la sua vita come si vede a vedere cos è successo che non è*
-
-LSTM + GRU: *e non si vedeva più la testa e non aveva più coraggio di non far nulla e non si*
 
 ## Theory background
 The AI model consist of a Variational Autoencoder in which both Encoder and Decoder are Recurrent Neural Networks.
