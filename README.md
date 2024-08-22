@@ -9,9 +9,9 @@ The Word Embedding layer has been initialized using a Word2vec model trained on 
 
 Example of output for the two models giving as input *"nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura che la diritta via era smarrita"* to transfer in Italian:
 
-* **_GRU + GRU_**: *e la sua insofferenza e la sua vita come si vede a vedere cos è successo che non è*
+* **GRU + GRU**: *e la sua insofferenza e la sua vita come si vede a vedere cos è successo che non è*
 
-* **_LSTM + GRU_**: *e non si vedeva più la testa e non aveva più coraggio di non far nulla e non si*
+* **LSTM + GRU**: *e non si vedeva più la testa e non aveva più coraggio di non far nulla e non si*
 
 ## Table of Contens 
 * [Structure](#Structure)
